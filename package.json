@@ -1,9 +1,0 @@
-{
-  "name": "template",
-  "version": "1.0.0",
-  "description": "use for personal projects",
-  "main": "index.js",
-  "repository": "https://github.com/jaemin96/Template_Repo",
-  "author": "jaemin <77824886+jaemin96@users.noreply.github.com>",
-  "license": "MIT"
-}
