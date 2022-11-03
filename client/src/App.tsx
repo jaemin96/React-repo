@@ -1,8 +1,13 @@
 import React from 'react';
-import './App.css';
+import style from './App.module.scss';
+import { MousePointer } from 'components/Mouse';
 
 function App() {
-    return <></>;
+    return (
+        <>
+            <MousePointer text="hello world" />
+        </>
+    );
 }
 
 export default App;
