@@ -6,27 +6,27 @@ interface Props {
 }
 
 export const MousePointer = (props: Props) => {
-    const [positionX, setPositionX] = useState(0);
-    const [positionY, setPositionY] = useState(0);
+    const [position, setPosition] = useState({
+        x: 0,
+        y: 0,
+    });
     const [styles, setStyles] = useState({});
 
-    document.addEventListener('mousemove', (e) => {
+    const handlePosition = (e: any) => {
+        console.log({ e });
         const { clientX, clientY } = e;
-        setPositionX(clientX);
-        setPositionY(clientY);
-    });
+        setPosition({ x: clientX, y: clientY });
+    };
 
     React.useEffect(() => {
-        console.log({ positionX }, { positionY });
         setStyles({
-            top: positionY,
-            left: positionX,
+            transform: `translate(${position.x}px, ${position.y}px)`,
         });
-    }, [positionX, positionY]);
+    }, [position]);
 
     return (
-        <div className={style.pointer} style={styles}>
-            {props.text}
+        <div className={style.pointer_Wrapper} onPointerMove={handlePosition}>
+            <span style={styles}>hello</span>
         </div>
     );
 };
