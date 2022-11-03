@@ -6,6 +6,7 @@ interface Props {
 }
 
 export const MousePointer = (props: Props) => {
+    const { text } = props;
     const [position, setPosition] = useState({
         x: 0,
         y: 0,
@@ -13,7 +14,6 @@ export const MousePointer = (props: Props) => {
     const [styles, setStyles] = useState({});
 
     const handlePosition = (e: any) => {
-        console.log({ e });
         const { clientX, clientY } = e;
         setPosition({ x: clientX, y: clientY });
     };
@@ -26,7 +26,7 @@ export const MousePointer = (props: Props) => {
 
     return (
         <div className={style.pointer_Wrapper} onPointerMove={handlePosition}>
-            <span style={styles}>hello</span>
+            <span style={styles}>{text}</span>
         </div>
     );
 };
