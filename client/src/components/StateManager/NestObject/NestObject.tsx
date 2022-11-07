@@ -2,10 +2,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import style from './NestObject.module.scss';
 
 export const NestObject = () => {
-    const [family, setFamily] = useState<object>({
+    const [family, setFamily] = useState({
         area: 'suwon',
         head: 'mom',
-        people: [],
+        people: [
+            {
+                name: '홍길동',
+                age: 15,
+                position: '떠돌이',
+            },
+        ],
     });
 
     const [visible, setVisible] = useState(false);
@@ -28,12 +34,18 @@ export const NestObject = () => {
         e.preventDefault();
         const { name, age, position } = e.target;
 
-        setFamily((prev) => ({
-            ...prev,
+        setFamily({
+            ...family,
             people: [
+                ...family.people,
                 { name: name.value, age: age.value, position: position.value },
             ],
-        }));
+
+            // 현재 있는 녀석 + 새로 추가한 녀석 = [{prev}, {new}] === ...prev, {새로 추가할 거} 이거 맞자나
+            // [
+            //     { name: name.value, age: age.value, position: position.value },
+            // ],
+        });
     };
 
     return (
