@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import style from './NestObject.module.scss';
 
 export const NestObject = () => {
-    const [family, setFamily] = useState({
+    const [family, setFamily] = useState<object>({
         area: 'suwon',
         head: 'mom',
         people: [],
@@ -26,9 +26,14 @@ export const NestObject = () => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        console.log({ e });
+        const { name, age, position } = e.target;
 
-        console.log(formRef.current);
+        setFamily((prev) => ({
+            ...prev,
+            people: [
+                { name: name.value, age: age.value, position: position.value },
+            ],
+        }));
     };
 
     return (
@@ -38,10 +43,10 @@ export const NestObject = () => {
             {/* input section - name & age & position / submit, cancel btn */}
             {visible && (
                 <form onSubmit={handleSubmit} ref={formRef}>
-                    <input type="text" placeholder="name" />
-                    <input type="text" placeholder="age" />
-                    <input type="text" placeholder="position" />
-                    <button>submit</button>
+                    <input name="name" type="text" placeholder="name" />
+                    <input name="age" type="text" placeholder="age" />
+                    <input name="position" type="text" placeholder="position" />
+                    <button type="submit">submit</button>
                     <button onClick={inActiveInput}>CANCEL</button>
                 </form>
             )}
