@@ -40,12 +40,11 @@ export const NestObject = () => {
                 ...family.people,
                 { name: name.value, age: age.value, position: position.value },
             ],
-
-            // 현재 있는 녀석 + 새로 추가한 녀석 = [{prev}, {new}] === ...prev, {새로 추가할 거} 이거 맞자나
-            // [
-            //     { name: name.value, age: age.value, position: position.value },
-            // ],
         });
+
+        name.value = '';
+        age.value = '';
+        position.value = '';
     };
 
     return (
@@ -62,7 +61,34 @@ export const NestObject = () => {
                     <button onClick={inActiveInput}>CANCEL</button>
                 </form>
             )}
-            <div className={style.info_container}>nest object</div>
+            <div className={style.info_container}>
+                <h1>[SUWON FAMILY]</h1>
+                <h2>{`AREA : ${family.area}`}</h2>
+                <h2>{`HEAD : ${family.head}`}</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>position</th>
+                            <th>name</th>
+                            <th>age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {family &&
+                            family.people.map((info, index) => {
+                                return (
+                                    <tr key={`${info.position}__${index}`}>
+                                        <td>{info.position}</td>
+                                        <td>{info.name}</td>
+                                        <td>{info.age}</td>
+                                    </tr>
+                                );
+                            })}
+                    </tbody>
+                </table>
+                {/* {family.map((info) => {})}
+                <div></div> */}
+            </div>
         </div>
     );
 };
