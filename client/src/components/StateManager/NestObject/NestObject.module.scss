@@ -3,5 +3,13 @@
     flex-direction: column;
     gap: 2rem;
     .info_container {
+        table {
+            tr {
+                th {
+                    padding-right: 2rem;
+                    border: 1px solid black;
+                }
+            }
+        }
     }
 }
