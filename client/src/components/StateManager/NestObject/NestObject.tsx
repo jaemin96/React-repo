@@ -14,12 +14,18 @@ export const NestObject = () => {
         ],
     });
 
+    const [familyCount, setFamilyCount] = useState(0);
+
     const [visible, setVisible] = useState(false);
 
     const formRef = useRef(null);
 
     useEffect(() => {
         console.log({ family });
+
+        if (family && family.people) {
+            setFamilyCount(family.people.length);
+        }
     }, [family]);
 
     const activeInput = () => {
@@ -63,6 +69,7 @@ export const NestObject = () => {
             )}
             <div className={style.info_container}>
                 <h1>[SUWON FAMILY]</h1>
+                <h2>{`Number Of Family : ${familyCount}`}</h2>
                 <h2>{`AREA : ${family.area}`}</h2>
                 <h2>{`HEAD : ${family.head}`}</h2>
                 <table>
