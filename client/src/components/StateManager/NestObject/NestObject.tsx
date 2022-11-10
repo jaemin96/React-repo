@@ -93,8 +93,6 @@ export const NestObject = () => {
                             })}
                     </tbody>
                 </table>
-                {/* {family.map((info) => {})}
-                <div></div> */}
             </div>
         </div>
     );
